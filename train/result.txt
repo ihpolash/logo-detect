@@ -1,0 +1,6 @@
+Final test accuracy = 51.2% (N=41)
+Final test accuracy = 51.2% (N=41)
+Final test accuracy = 50.0% (N=42)
+Final test accuracy = 47.5% (N=40)
+Final test accuracy = 47.5% (N=40)
+Final test accuracy = 55.0% (N=40)
