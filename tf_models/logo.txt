@@ -22,6 +22,7 @@ avanade
 samsung
 appdynamics
 nasdaq
+whole foods
 twilio
 datadog
 looker

@@ -13,6 +13,9 @@ from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
 class LogoSerializer(serializers.Serializer):
     image = serializers.ImageField()
 
+class LogoUrlSerializer(serializers.Serializer):
+    url = serializers.CharField()
+
 
 class TrainModelSerializer(serializers.Serializer):
     # image = Base64ImageField(max_length=None, use_url=True,)
@@ -34,6 +37,16 @@ class LogoDetectView(GenericAPIView):
         response = client.get_logo_image_clssify(image)
         return Response(response, status=status.HTTP_200_OK)
 
+class LogoURLDetectView(GenericAPIView):
+    permission_classes = [permissions.AllowAny]
+    serializer_class = LogoUrlSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        url = serializer.validated_data.get('url')
+        response = client.get_logo_url_clssify(url)
+        return Response(response, status=status.HTTP_200_OK)
 
 class TrainModelView(GenericAPIView):
     permission_classes = [permissions.AllowAny]

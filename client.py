@@ -9,6 +9,7 @@ from django.core.files.base import ContentFile
 from django.conf import settings
 import numpy as np
 import requests
+from io import BytesIO
 from PIL import Image
 import tensorflow as tf
 import random
@@ -18,6 +19,9 @@ import pickle
 import cv2
 from imutils import paths
 import pathlib
+import urllib.request
+from urllib.request import urlopen
+from skimage import io
 import shutil
 import logoDetect.retrain_logo as retrain_logo
 
@@ -90,6 +94,81 @@ def get_logo_image_clssify(image):
         # print(e)
         default_storage.delete(f'tmp/{temp_image_name}.jpg')
         response = {"predictions": None, "message": "Low Prediction Score!"}
+        return response
+
+def url_to_image(url_link):
+	# download the image, convert it to a NumPy array, and then read
+	# it into OpenCV format
+	# Your code where you can use urlopen
+    with urlopen(url_link) as url:
+        resp = url.read()
+    image = np.asarray(bytearray(resp.read()), dtype="uint8")
+    image = cv2.imdecode(image, cv2.IMREAD_COLOR)
+    # return the image
+    return image
+
+
+def get_logo_url_clssify(url):
+    temp_image_name = get_random_alphaNumeric_string(4)
+    try:
+        os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+        # image_path = default_storage.save(f"tmp/{temp_image_name}.jpg", ContentFile(image.read()))
+        # tmp_file = os.path.join(settings.MEDIA_URL, image_path)
+        # # print(image_path)
+        # image_data = default_storage.open(image_path).read()
+        # # Loads label file, strips off carriage return
+        # # Head Detector
+        # arr = np.asarray(bytearray(image_data), dtype=np.uint8)
+        img = io.imread(url)
+        # img = cv2.imread(image_data)
+        print(img)
+        height, width = img.shape[:2]
+        # dim = (299, 299)
+        face_data = cv2.imencode('.jpg', img)[1].tostring()
+
+        # Loads label file, strips off carriage return
+
+        with tf.io.gfile.GFile(f"tf_models/logo.txt", 'r') as fl:
+            label_lines = [line.rstrip() for line in fl]
+        # print("model loaded")
+
+        # Unpersists graph from file
+        with tf.io.gfile.GFile(f"tf_models/logo.pb", 'rb') as f:
+            tf.compat.v1.reset_default_graph()
+            graph_def = tf.compat.v1.GraphDef()
+            graph_def.ParseFromString(f.read())
+            tf.import_graph_def(graph_def, name='')
+            pass
+        res_arr = []
+        scores = []
+
+        final_predictions = tf_face_predictor(label_lines, face_data, 50, img)
+
+        scores = final_predictions[0]
+        id_string = final_predictions[1]
+        res_arr.append({"company_name": id_string[np.argmax(scores)], "score": round(max(scores) * 100)})
+        flag = True
+        # default_storage.delete(f'tmp/{temp_image_name}.jpg')
+        if flag:
+            # logo_image_path = f"0/{res_arr[0]['company_name']}_{round(max(scores) * 100)}.jpg"
+            # if default_storage.exists(logo_image_path):
+            #     default_storage.save(f"0/{res_arr[0]['company_name']}_{temp_image_name}_{round(max(scores) * 100)}.jpg",
+            #                             ContentFile(image_data))
+            #     pass
+            # else:
+            #     default_storage.save(f"0/{res_arr[0]['company_name']}_{round(max(scores) * 100)}.jpg",
+            #                             ContentFile(image_data))
+            response = {"predictions": {
+                "detection_classes": res_arr}}
+            pass
+        else:
+            response = {"predictions": None, "message": "No match found!"}
+            pass
+        return response
+    except Exception as e:
+        # print(e)
+        # default_storage.delete(f'tmp/{temp_image_name}.jpg')
+        response = {"predictions": None, "message": "No result found!"}
         return response
 
 
