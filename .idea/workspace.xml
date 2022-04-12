@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="04575f8d-0d13-4555-8f3f-3213aea514cf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/0/appdynamics_99.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0/appdynamics_tiLX_99.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0/asana_66.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0/azure_89.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0/azure_97.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkpoint_dir/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/checkpoint_dir/checkpoint" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkpoint_dir/model.ckpt.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/checkpoint_dir/model.ckpt.data-00000-of-00001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkpoint_dir/model.ckpt.index" beforeDir="false" afterPath="$PROJECT_DIR$/checkpoint_dir/model.ckpt.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkpoint_dir/model.ckpt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/checkpoint_dir/model.ckpt.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/0/amazon_100.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/0/amazon_82.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/0/amazon_89.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/0/amazon_95.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/0/amazon_DBAj_95.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/0/aws_84.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/0/aws_95.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/0/azure_71.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/0/canva_56.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/0/canva_95.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/0/canva_96.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/0/canva_98.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/0/canva_99.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/0/canva_MFPN_98.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/0/canva_QhBp_99.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/0/canva_epYb_99.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tf_models/logo.pb" beforeDir="false" afterPath="$PROJECT_DIR$/tf_models/logo.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tf_models/logo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tf_models/logo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tf_models/logo_test.pb" beforeDir="false" afterPath="$PROJECT_DIR$/tf_models/logo_test.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tf_models/logo_test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tf_models/logo_test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train/inception/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/train/inception/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train/inception/imagenet_2012_challenge_label_map_proto.pbtxt" beforeDir="false" afterPath="$PROJECT_DIR$/train/inception/imagenet_2012_challenge_label_map_proto.pbtxt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train/inception/imagenet_synset_to_human_label_map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/train/inception/imagenet_synset_to_human_label_map.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train/result.txt" beforeDir="false" afterPath="$PROJECT_DIR$/train/result.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="27hqXXQQMIlT9jC5BID4yLYbwZ1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="04575f8d-0d13-4555-8f3f-3213aea514cf" name="Changes" comment="" />
+      <created>1649782706961</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1649782706961</updated>
+    </task>
+    <servers />
+  </component>
+</project>
