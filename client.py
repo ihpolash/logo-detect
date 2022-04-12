@@ -75,13 +75,13 @@ def get_logo_image_clssify(image):
         flag = True
         default_storage.delete(f'tmp/{temp_image_name}.jpg')
         if flag:
-            logo_image_path = f"0/{res_arr[0]['company_name']}_{round(max(scores) * 100)}.jpg"
+            logo_image_path = f"media/{res_arr[0]['company_name']}_{round(max(scores) * 100)}.jpg"
             if default_storage.exists(logo_image_path):
-                default_storage.save(f"0/{res_arr[0]['company_name']}_{temp_image_name}_{round(max(scores) * 100)}.jpg",
+                default_storage.save(f"media/{res_arr[0]['company_name']}_{temp_image_name}_{round(max(scores) * 100)}.jpg",
                                         ContentFile(image_data))
                 pass
             else:
-                default_storage.save(f"0/{res_arr[0]['company_name']}_{round(max(scores) * 100)}.jpg",
+                default_storage.save(f"media/{res_arr[0]['company_name']}_{round(max(scores) * 100)}.jpg",
                                         ContentFile(image_data))
             response = {"predictions": {
                 "detection_classes": res_arr}}
@@ -119,9 +119,11 @@ def get_logo_url_clssify(url):
         # # Loads label file, strips off carriage return
         # # Head Detector
         # arr = np.asarray(bytearray(image_data), dtype=np.uint8)
-        img = io.imread(url)
-        # img = cv2.imread(image_data)
-        print(img)
+        img_data = requests.get(url).content
+        img_path = f'media/image_name.jpg'
+        with open(img_path, 'wb') as handler:
+            handler.write(img_data)
+        img = cv2.imread(img_path)
         height, width = img.shape[:2]
         # dim = (299, 299)
         face_data = cv2.imencode('.jpg', img)[1].tostring()
@@ -150,14 +152,6 @@ def get_logo_url_clssify(url):
         flag = True
         # default_storage.delete(f'tmp/{temp_image_name}.jpg')
         if flag:
-            # logo_image_path = f"0/{res_arr[0]['company_name']}_{round(max(scores) * 100)}.jpg"
-            # if default_storage.exists(logo_image_path):
-            #     default_storage.save(f"0/{res_arr[0]['company_name']}_{temp_image_name}_{round(max(scores) * 100)}.jpg",
-            #                             ContentFile(image_data))
-            #     pass
-            # else:
-            #     default_storage.save(f"0/{res_arr[0]['company_name']}_{round(max(scores) * 100)}.jpg",
-            #                             ContentFile(image_data))
             response = {"predictions": {
                 "detection_classes": res_arr}}
             pass
@@ -168,7 +162,7 @@ def get_logo_url_clssify(url):
     except Exception as e:
         # print(e)
         # default_storage.delete(f'tmp/{temp_image_name}.jpg')
-        response = {"predictions": None, "message": "No result found!"}
+        response = {"predictions": None, "message": "Error found!"}
         return response
 
 

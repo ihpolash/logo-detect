@@ -4,3 +4,5 @@ Pillow
 tensorflow
 opencv-python
 imutils
+djangorestframework
+scikit-image
