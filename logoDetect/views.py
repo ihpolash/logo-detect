@@ -16,6 +16,9 @@ class LogoSerializer(serializers.Serializer):
 class LogoUrlSerializer(serializers.Serializer):
     url = serializers.CharField()
 
+class UpdateDatasetSerializer(serializers.Serializer):
+    update_dataset = serializers.BooleanField()
+
 
 class TrainModelSerializer(serializers.Serializer):
     # image = Base64ImageField(max_length=None, use_url=True,)
@@ -46,6 +49,17 @@ class LogoURLDetectView(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         url = serializer.validated_data.get('url')
         response = client.get_logo_url_clssify(url)
+        return Response(response, status=status.HTTP_200_OK)
+
+class UpdateDatasetView(GenericAPIView):
+    permission_classes = [permissions.AllowAny]
+    serializer_class = UpdateDatasetSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        update_dataset = serializer.validated_data.get('update_dataset')
+        response = client.download_dataset(update_dataset)
         return Response(response, status=status.HTTP_200_OK)
 
 class TrainModelView(GenericAPIView):

@@ -25,6 +25,8 @@ from skimage import io
 import shutil
 import logoDetect.retrain_logo as retrain_logo
 
+import boto3
+
 
 def get_random_alphaNumeric_string(stringLength=4):
     lettersAndDigits = string.ascii_letters + string.digits
@@ -193,6 +195,35 @@ def tf_face_predictor(label_lines, image_data, threshold, im_resize):
 
     return [scores, id_string]
 
+def download_dataset(update_dataset):
+    if update_dataset:
+        s3 = boto3.resource(
+                service_name='s3',
+                region_name='us-east-2',
+                aws_access_key_id='AKIAWAP6EWQETX26BL7S',
+                aws_secret_access_key='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'
+                )
+        my_bucket = s3.Bucket('logo-detect-training-data')
+
+        for object_summary in my_bucket.objects.filter(Prefix="dataset/"):
+        #     print(object_summary.key.split("/")[0])
+        
+            sub_dir = os.path.join("train", os.path.join(object_summary.key.split("/")[0],object_summary.key.split("/")[1]))
+            if not os.path.exists(object_summary.key.split("/")[0]):
+                os.makedirs(object_summary.key.split("/")[0])
+            if not os.path.exists(sub_dir):
+                os.makedirs(sub_dir)
+            if not os.path.isfile(os.path.join(sub_dir, object_summary.key.split("/")[-1])):
+                try:
+                    object = my_bucket.Object(object_summary.key)
+                    object.download_file(os.path.join(sub_dir, object_summary.key.split("/")[-1]))
+                except:
+                    pass
+            else:
+                pass
+    
+    return "dataset updated!"
+
 
 def train_model(how_many_training_steps, testing_percentage, learning_rate, delete_checkpoint):
     dest_directory = f"train"
@@ -218,6 +249,10 @@ def train_model(how_many_training_steps, testing_percentage, learning_rate, dele
     random_brightness = 0
     model_dir = f"train/inception"
     checkpoint_directory = f"checkpoint_dir"
+    update_dataset = True
+
+    update_dataset = download_dataset(update_dataset)
+    print(update_dataset)
 
     response = retrain_logo.main(image_dir, output_graph, output_labels, summaries_dir, how_many_training_steps, testing_percentage, validation_percentage, 
           eval_step_interval, train_batch_size, test_batch_size, validation_batch_size, bottleneck_dir, final_tensor_name, flip_left_right,

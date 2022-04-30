@@ -6,3 +6,4 @@ opencv-python
 imutils
 djangorestframework
 scikit-image
+boto3
