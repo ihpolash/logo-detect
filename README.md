@@ -12,3 +12,5 @@
 	>> /api/v1/logo_url_detect
 ## Endpoint for Training:
 	>> /api/v1/train_model
+## Endpoint for Update Dataset:
+	>> /api/v1/update_dataset
