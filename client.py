@@ -200,8 +200,8 @@ def download_dataset(update_dataset):
         s3 = boto3.resource(
                 service_name='s3',
                 region_name='us-east-2',
-                aws_access_key_id='AKIAWAP6EWQETX26BL7S',
-                aws_secret_access_key='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'
+                aws_access_key_id='key_id',
+                aws_secret_access_key='secret_key'
                 )
         my_bucket = s3.Bucket('logo-detect-training-data')
 
